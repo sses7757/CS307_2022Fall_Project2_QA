@@ -4,7 +4,7 @@
 
 - Exactly which APIs change the item states?
   - There are several questions about the details of the state transitions. Most of them are explained here:
-    1. At beginning, a courier invokes `newItem` API with a new `ItemInfo`. Only the EMPTYable fields mentioned in the documentation can be `null`. Note that the inpu parameter given by the judge will have redundant fields since the item's current state must be `Picking-up` and the retrieval courier must be the `LogInfo` user.
+    1. At beginning, a courier invokes `newItem` API with a new `ItemInfo`. Only the EMPTYable fields mentioned in the documentation can be `null`. Note that the inpu parameter given by the judge **may or may not** have redundant fields like the item's current state (must be `Picking-up`) and the retrieval courier (must be the `LogInfo` user).
     2. At `Picking-up`, only the item's retrieval courier can invoke `setItemState` API to set its state to `To-Export Transporting`.
     3. At `To-Export Transporting`, only the item's retrieval courier can invoke `setItemState` API to set its state to `Export Checking`.
     4. At current state, the invocation of `getItemsAtPort` to the item's export city shall return an array containing this item.
