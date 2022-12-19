@@ -45,7 +45,7 @@
   - Via SQL statements that look up for item(s) of `Shipping` state with given ship or items of `Packing to Container`--`Unpacking from Container` states with given container.
 
 8. Can one loads a contrainer to a sailing ship?
-  - *To be confirmed*
+  - No. Ship must be un-sailing.
   
 9. Are the passwords directly passed to the APIs and obtained from them?
   - Yes. It is not permitted in real-world scenario, however, it is simpler for a course project.
