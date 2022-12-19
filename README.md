@@ -23,9 +23,9 @@
   - If the current local judge returns otherwise, please refer to this Q\&A supplement since it will be updated more often.
   - Most of the details in this answer are mentioned in the documentation, however, they are separated at different APIs on different pages. We apologize for the additional comprehension obstacles.
 
-- Which items shall the API `getItemsAtPort` return?
-  - As described in the documentation: "items currently waiting at this officer’s working seaport".
-  - We apologize for the bug in the local judge of this API, which will be fixed soon.
+- ~~Which items shall the API `getItemsAtPort` return?~~
+  - ~~As described in the documentation: "items currently waiting at this officer’s working seaport".~~
+  - ~~We apologize for the bug in the local judge of this API, which will be fixed soon.~~
 
 - Is there any time-related constraints?
   - No. Otherwise this project would be too complicated.
