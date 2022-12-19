@@ -2,9 +2,9 @@
 
 ## Questions and Answers
 
-- Exactly which APIs change the item states?
+1. Exactly which APIs change the item states?
   - There are several questions about the details of the state transitions. Most of them are explained here:
-    1. At beginning, a courier invokes `newItem` API with a new `ItemInfo`. Only the EMPTYable fields mentioned in the documentation can be `null`. Note that the inpu parameter given by the judge **may or may not** have redundant fields like the item's current state (should be `Picking-up`, can be `null`) and the retrieval courier (should be the `LogInfo` user, can be `null`).
+    1. At beginning, a courier invokes `newItem` API with a new `ItemInfo`. Only the EMPTYable fields mentioned in the documentation and the `ItemState` can be `null`. Note that the input `ItemInfo` shall have different import/export and retrieval/deliverty cities and correct import/export taxes corresponding to the tax rates.
     2. At `Picking-up`, only the item's retrieval courier can invoke `setItemState` API to set its state to `To-Export Transporting`.
     3. At `To-Export Transporting`, only the item's retrieval courier can invoke `setItemState` API to set its state to `Export Checking`.
     4. At current state, the invocation of `getItemsAtPort` to the item's export city shall return an array containing this item.
@@ -22,14 +22,36 @@
 ![Detailed State Flow](updated_state_flow.jpg)
   - If the current local judge returns otherwise, please refer to this Q\&A supplement since it will be updated more often.
   - Most of the details in this answer are mentioned in the documentation, however, they are separated at different APIs on different pages. We apologize for the additional comprehension obstacles.
-
-- ~~Which items shall the API `getItemsAtPort` return?~~
+  
+2. ~~Which items shall the API `getItemsAtPort` return?~~
   - ~~As described in the documentation: "items currently waiting at this officer’s working seaport".~~
   - ~~We apologize for the bug in the local judge of this API, which will be fixed soon.~~
 
-- Is there any time-related constraints?
+3. Is there any time-related constraints?
   - No. Otherwise this project would be too complicated.
 
-- Will there be new items, containers, ships and/or couriers?
+4. Will there be new items, containers, ships and/or couriers?
   - Yes for items, no for other.
   - There may be couriers not mentioned in `records.csv`, however, they must show in `staffs.csv`.
+  
+5. How do we check the permission management?
+  - By a **simple** permission test and the your uploaded permission granting statements.
+  - Hence, there are a series of ways of implementing the permission management, you can choose a way you desire.
+
+6. Can one loads an empty container or sails an empty ship?
+  - No. Since there will be no states stored explicitly for the containers and ships in a minimal implementation, such operations would result in no change in such implementation.
+
+7. How can one obtain a shipping or occupying status of a ship or a container?
+  - Via SQL statements that look up for item(s) of `Shipping` state with given ship or items of `Packing to Container`--`Unpacking from Container` states with given container.
+
+8. Can one loads a contrainer to a sailing ship?
+  - *To be confirmed*
+  
+9. Are the passwords directly passed to the APIs and obtained from them?
+  - Yes. It is not permitted in real-world scenario, however, it is simpler for a course project.
+  
+10. What are the main contains of the report?
+  - First, the overall structure of your modified database design.
+  - Then, the permission management statements.
+  - Most importantly, which SQL statements you have used to implement these APIs.
+  - For groups that complete the advanced requirements, additional contents of the advanced requirements shall also be included.
