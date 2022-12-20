@@ -55,3 +55,7 @@
   - Then, the permission management statements.
   - Most importantly, which SQL statements you have used to implement these APIs.
   - For groups that complete the advanced requirements, additional contents of the advanced requirements shall also be included.
+
+## Other Q&A
+
+[Q&A of Class at 12.29](答疑汇总20221219.md)
